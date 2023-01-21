@@ -2,8 +2,6 @@ import express from "express";
 
 import { LocationService } from "./index.js";
 
-const API_URL = "https://cabinet.cherkasyoblenergo.com/ajax/searadrrez.php";
-
 const locationsRouter = express.Router();
 
 locationsRouter.get("/lisove", async (req, res) => {

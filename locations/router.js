@@ -9,7 +9,7 @@ locationsRouter.get("/lisove", async (req, res) => {
   res.send(await LocationService.getDataByLocation(6499, 1));
 });
 
-locationsRouter.get("/locations", async (req, res) => {
+locationsRouter.get("/location", async (req, res) => {
   const { street, house, flat } = req.query;
   console.log(
     `Getting electricity schedule for Location: Street:${street}, House: ${house}, Flat: ${flat}`

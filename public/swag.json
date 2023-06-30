@@ -25,7 +25,7 @@
     "tags": [
         {
             "name": "assets"
-        },
+        }
     ],
     "components": {
         "securitySchemes": {
@@ -259,5 +259,288 @@
                 ]
             }
         },
+        "/releases/{releaseId}/draft-or-release/marketing-info": {
+            "get": {
+                "description": "Get marketing tab information for draft or release by id",
+                "parameters": [
+                    {
+                        "name": "releaseId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default response body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "id": {
+                                            "type": "string"
+                                        },
+                                        "releaseId": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                        },
+                                        "releaseDraftId": {
+                                            "type": "string",
+                                            "format": "uuid"
+                                        },
+                                        "content": {
+                                            "type": "object",
+                                            "properties": {
+                                                "artistsInfo": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "name": {
+                                                                "type": "string"
+                                                            },
+                                                            "photoURL": {
+                                                                "type": "string"
+                                                            },
+                                                            "bio": {
+                                                                "type": "string"
+                                                            },
+                                                            "spotifyLink": {
+                                                                "type": "string"
+                                                            },
+                                                            "appleLink": {
+                                                                "type": "string"
+                                                            },
+                                                            "instagramHandle": {
+                                                                "type": "string"
+                                                            },
+                                                            "tikTokHandle": {
+                                                                "type": "string"
+                                                            },
+                                                            "twitterHandle": {
+                                                                "type": "string"
+                                                            },
+                                                            "facebookHandle": {
+                                                                "type": "string"
+                                                            },
+                                                            "youtubeAccount": {
+                                                                "type": "string"
+                                                            },
+                                                            "website": {
+                                                                "type": "string"
+                                                            },
+                                                            "assets": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "link": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false
+                                                                }
+                                                            },
+                                                            "profiles": {
+                                                                "type": "array",
+                                                                "items": {
+                                                                    "type": "object",
+                                                                    "properties": {
+                                                                        "profileName": {
+                                                                            "type": "string"
+                                                                        },
+                                                                        "link": {
+                                                                            "type": "string"
+                                                                        }
+                                                                    },
+                                                                    "additionalProperties": false
+                                                                }
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
+                                                    }
+                                                },
+                                                "marketingActions": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "title": {
+                                                                "type": "string"
+                                                            },
+                                                            "category": {
+                                                                "type": "string",
+                                                                "enum": [
+                                                                    "Social plan",
+                                                                    "Fan Engagement & Activations",
+                                                                    "Music Video/Content Plan",
+                                                                    "Tour Plans/Dates",
+                                                                    "Radio Plan",
+                                                                    "Major TV or Press",
+                                                                    "Influencer Campaigns",
+                                                                    "other"
+                                                                ]
+                                                            },
+                                                            "plan": {
+                                                                "type": "string"
+                                                            },
+                                                            "startDate": {
+                                                                "type": "string",
+                                                                "format": "date-time"
+                                                            },
+                                                            "endDate": {
+                                                                "type": "string",
+                                                                "format": "date-time"
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
+                                                    }
+                                                },
+                                                "focusMarkets": {
+                                                    "type": "array",
+                                                    "items": {
+                                                        "type": "object",
+                                                        "properties": {
+                                                            "market": {
+                                                                "type": "string"
+                                                            },
+                                                            "planDescription": {
+                                                                "type": "string",
+                                                                "nullable": true
+                                                            },
+                                                            "spendAmount": {
+                                                                "type": "string"
+                                                            },
+                                                            "currency": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "id": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "name": {
+                                                                        "type": "string"
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            }
+                                                        },
+                                                        "additionalProperties": false
+                                                    }
+                                                },
+                                                "releaseDetails": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "focusTrackId": {
+                                                            "type": "string"
+                                                        },
+                                                        "preSaveDate": {
+                                                            "type": "string",
+                                                            "format": "date-time"
+                                                        },
+                                                        "launchDate": {
+                                                            "type": "string",
+                                                            "format": "date-time"
+                                                        },
+                                                        "keywords": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "string"
+                                                            }
+                                                        },
+                                                        "releaseShortDescription": {
+                                                            "type": "string"
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                },
+                                                "relatedLinks": {
+                                                    "type": "object",
+                                                    "properties": {
+                                                        "demoMusic": {
+                                                            "type": "object",
+                                                            "properties": {
+                                                                "link": {
+                                                                    "type": "string"
+                                                                },
+                                                                "isAppleMotion": {
+                                                                    "type": "boolean"
+                                                                },
+                                                                "isAppleSpatialAudioMix": {
+                                                                    "type": "boolean"
+                                                                }
+                                                            },
+                                                            "additionalProperties": false
+                                                        },
+                                                        "linkFire": {
+                                                            "type": "string"
+                                                        },
+                                                        "musicVideos": {
+                                                            "type": "array",
+                                                            "items": {
+                                                                "type": "object",
+                                                                "properties": {
+                                                                    "musicVideoName": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "musicVideoLink": {
+                                                                        "type": "string"
+                                                                    },
+                                                                    "videoReleaseDate": {
+                                                                        "type": "string",
+                                                                        "format": "date-time"
+                                                                    },
+                                                                    "isDateTBD": {
+                                                                        "type": "boolean"
+                                                                    }
+                                                                },
+                                                                "additionalProperties": false
+                                                            }
+                                                        }
+                                                    },
+                                                    "additionalProperties": false
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "createdAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "updatedAt": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "lockedUntil": {
+                                            "type": "string",
+                                            "format": "date-time"
+                                        },
+                                        "lockedBy": {
+                                            "type": "string"
+                                        },
+                                        "updatedBy": {
+                                            "type": "string"
+                                        },
+                                        "createdBy": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "required": [
+                                        "id"
+                                    ],
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "releases"
+                ]
+            }
+        }
     }
 }

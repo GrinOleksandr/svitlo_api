@@ -1,0 +1,263 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "test",
+        "description": "This api represents a combination of all API Gateway Lambda Proxy components. Each root resource is proxied to a decoupled lambda project. The ",
+        "contact": {
+            "email": "fdsfsf"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        },
+        "version": "1.0.0"
+    },
+    "servers": [
+        {
+            "url": "https://test1/",
+            "description": "(dev)"
+        },
+        {
+            "url": "https://test2/",
+            "description": "(qa)"
+        }
+    ],
+    "tags": [
+        {
+            "name": "assets"
+        },
+    ],
+    "components": {
+        "securitySchemes": {
+            "bearerAuth": {
+                "type": "http",
+                "scheme": "bearer",
+                "bearerFormat": "JWT"
+            }
+        }
+    },
+    "security": [
+        {
+            "bearerAuth": []
+        }
+    ],
+    "paths": {
+		  "/assets/releases/{releaseId}": {
+            "get": {
+                "description": "Get release assets",
+                "parameters": [
+                    {
+                        "name": "releaseId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default response body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "releaseTitle": {
+                                            "type": "string"
+                                        },
+                                        "logoMetadata": {
+                                            "type": "object",
+                                            "properties": {
+                                                "id": {
+                                                    "type": "string"
+                                                },
+                                                "fileName": {
+                                                    "type": "string"
+                                                },
+                                                "width": {
+                                                    "type": "number",
+                                                    "format": "float"
+                                                },
+                                                "height": {
+                                                    "type": "number",
+                                                    "format": "float"
+                                                },
+                                                "resolution": {
+                                                    "type": "number",
+                                                    "format": "float"
+                                                },
+                                                "size": {
+                                                    "type": "number",
+                                                    "format": "float"
+                                                },
+                                                "colorspace": {
+                                                    "type": "string"
+                                                },
+                                                "format": {
+                                                    "type": "string"
+                                                },
+                                                "depth": {
+                                                    "type": "string"
+                                                },
+                                                "md5": {
+                                                    "type": "string"
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "coverArt": {
+                                            "type": "object",
+                                            "properties": {
+                                                "url": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                },
+                                                "destinationFileName": {
+                                                    "type": "string",
+                                                    "nullable": true
+                                                }
+                                            },
+                                            "additionalProperties": false
+                                        },
+                                        "tracks": {
+                                            "type": "array",
+                                            "items": {
+                                                "type": "object",
+                                                "properties": {
+                                                    "id": {
+                                                        "type": "string",
+                                                        "format": "uuid"
+                                                    },
+                                                    "resourceUrl": {
+                                                        "type": "string"
+                                                    },
+                                                    "destinationFileName": {
+                                                        "type": "string"
+                                                    }
+                                                },
+                                                "additionalProperties": false
+                                            }
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assets"
+                ]
+            }
+        },
+        "/assets/releases/{releaseId}/coverart/coverart-master": {
+            "get": {
+                "description": "Get presigned release logo resource",
+                "parameters": [
+                    {
+                        "name": "releaseId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "imgFormat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "jpg",
+                                "tif",
+                                "tiff",
+                                "jpeg"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default response body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "presignedUrl": {
+                                            "type": "string"
+                                        },
+                                        "expiresIn": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assets"
+                ]
+            }
+        },
+        "/assets/releases/{releaseId}/marketing-info/artist-image": {
+            "get": {
+                "description": "Get presigned marketing info artist image url",
+                "parameters": [
+                    {
+                        "name": "releaseId",
+                        "in": "path",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "format": "uuid"
+                        }
+                    },
+                    {
+                        "name": "imgFormat",
+                        "in": "query",
+                        "required": true,
+                        "schema": {
+                            "type": "string",
+                            "enum": [
+                                "jpg",
+                                "tif",
+                                "tiff",
+                                "jpeg"
+                            ]
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Default response body",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",
+                                    "properties": {
+                                        "presignedUrl": {
+                                            "type": "string"
+                                        },
+                                        "expiresIn": {
+                                            "type": "string"
+                                        }
+                                    },
+                                    "additionalProperties": false
+                                }
+                            }
+                        }
+                    }
+                },
+                "tags": [
+                    "assets"
+                ]
+            }
+        },
+    }
+}

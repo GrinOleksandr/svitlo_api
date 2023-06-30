@@ -262,6 +262,7 @@
         "/releases/{releaseId}/draft-or-release/marketing-info": {
             "get": {
                 "description": "Get marketing tab information for draft or release by id",
+                "operationId": "getMarketingInfoByReleaseId",
                 "parameters": [
                     {
                         "name": "releaseId",
